@@ -1,28 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gregory.Models;
 
 public partial class PaquetesHospedaje
 {
+    [Display(Name = "ID Paquete")]
     public int IdPaquete { get; set; }
 
     public string Nombre { get; set; } = null!;
 
     public string? Descripcion { get; set; }
 
+    [Display(Name = "Precio Total")]
     public decimal PrecioTotal { get; set; }
 
     public int Duracion { get; set; }
 
+    [Display(Name = "ID Servicio")]
     public int IdServicio { get; set; }
 
+    [Display(Name = "ID Habitación")]
     public int IdHabitacion { get; set; }
 
     public virtual ICollection<DetallePaquete> DetallePaquetes { get; set; } = new List<DetallePaquete>();
 
+    [Display(Name = "ID Habitación")]
     public virtual Habitacione IdHabitacionNavigation { get; set; } = null!;
 
+    [Display(Name = "ID Servicio")]
     public virtual Servicio IdServicioNavigation { get; set; } = null!;
 
     public virtual ICollection<PaquetesHabitacione> PaquetesHabitaciones { get; set; } = new List<PaquetesHabitacione>();

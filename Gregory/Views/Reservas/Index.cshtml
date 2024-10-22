@@ -5,12 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Reservas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Agregar Reserva</a>
 </p>
+<<<<<<< HEAD
 <table class="table" id="501">
+=======
+<table class="table" id="ReservasTable">
+>>>>>>> Daniel
     <thead>
         <tr>
             <th>
@@ -98,14 +102,15 @@
                 @Html.DisplayFor(modelItem => item.NitNavigation.Nit)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdReserva">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdReserva">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdReserva">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdReserva">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdReserva">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdReserva">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<<<<<<< HEAD
 @section Scripts {
     <script>
         $(document).ready(function () {
@@ -113,3 +118,20 @@
         });
     </script>
 }
+=======
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#ReservasTable').DataTable({
+                language: {
+                    "sLengthMenu": "Mostrar _MENU_ entradas",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "sSearch": "Buscar:"
+                }
+            });
+        })
+    </script>
+}
+>>>>>>> Daniel

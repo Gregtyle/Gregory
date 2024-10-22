@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Tipo de Habitaciones</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Agregar Tipo de Habitación</a>
 </p>
-<table class="table">
+<table class="table" id="TipoHabitacionTable">
     <thead>
         <tr>
             <th>
@@ -38,11 +38,26 @@
                 @Html.DisplayFor(modelItem => item.Capacidad)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdTipoHabitacion">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdTipoHabitacion">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdTipoHabitacion">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdTipoHabitacion">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdTipoHabitacion">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdTipoHabitacion">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#TipoHabitacionTable').DataTable({
+                language: {
+                    "sLengthMenu": "Mostrar _MENU_ entradas",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "sSearch": "Buscar:"
+                }
+            });
+        })
+    </script>
+}

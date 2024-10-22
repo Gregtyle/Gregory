@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Servicio</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Agregar Servicio</a>
 </p>
-<table class="table">
+<table class="table" id="ServicioTable">
     <thead>
         <tr>
             <th>
@@ -44,11 +44,26 @@
                 @Html.DisplayFor(modelItem => item.Precio)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdServicio">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdServicio">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdServicio">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdServicio">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdServicio">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdServicio">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#ServicioTable').DataTable({
+                language: {
+                    "sLengthMenu": "Mostrar _MENU_ entradas",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "sSearch": "Buscar:"
+                }
+            });
+        })
+    </script>
+}

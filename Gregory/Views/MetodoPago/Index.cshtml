@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Metodo de Pago</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Agregar Metodo de Pago</a>
 </p>
-<table class="table">
+<table class="table" id="MetodoPagoTable">
     <thead>
         <tr>
             <th>
@@ -32,11 +32,26 @@
                 @Html.DisplayFor(modelItem => item.Estado)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdMetodoPago">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdMetodoPago">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdMetodoPago">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdMetodoPago">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdMetodoPago">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdMetodoPago">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#MetodoPagoTable').DataTable({
+                language: {
+                    "sLengthMenu": "Mostrar _MENU_ entradas",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "sSearch": "Buscar:"
+                }
+            });
+        })
+    </script>
+}

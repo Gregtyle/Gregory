@@ -161,6 +161,24 @@ namespace Gregory.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public JsonResult ObtenerPrecios(int idServicio, int idHabitacion)
+        {
+            var servicio = _context.Servicios.Find(idServicio);
+            var habitacion = _context.Habitaciones.Find(idHabitacion);
+
+            if (servicio == null || habitacion == null)
+            {
+                return Json(new { precioServicio = 0, precioHabitacion = 0 });
+            }
+
+            return Json(new
+            {
+                precioServicio = servicio.Precio,
+                precioHabitacion = habitacion.Precio
+            });
+        }
+
         private bool PaquetesHospedajeExists(int id)
         {
             return _context.PaquetesHospedajes.Any(e => e.IdPaquete == id);
