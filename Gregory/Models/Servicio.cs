@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gregory.Models;
 
 public partial class Servicio
 {
+    [Display(Name = "ID de Servicio")]
     public int IdServicio { get; set; }
 
     public string Nombre { get; set; } = null!;

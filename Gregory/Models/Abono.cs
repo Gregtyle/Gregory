@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gregory.Models;
 
 public partial class Abono
 {
+    [Display(Name = "ID Abono")]
     public int IdAbono { get; set; }
 
+    [Display(Name = "ID Reserva")]
     public int IdReserva { get; set; }
 
+    [Display(Name = "Fecha de Abono")]
     public DateTime FechaAbono { get; set; }
 
     public decimal Valordeuda { get; set; }
@@ -25,5 +29,6 @@ public partial class Abono
 
     public bool Estado { get; set; }
 
+    [Display(Name = "ID Reserva")]
     public virtual Reserva IdReservaNavigation { get; set; } = null!;
 }

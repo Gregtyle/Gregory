@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Empresa</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Agregar Empresa</a>
 </p>
-<table class="table">
+<table class="table" id="EmpresaTable">
     <thead>
         <tr>
             <th>
@@ -44,11 +44,26 @@
                 @Html.DisplayFor(modelItem => item.RepresentanteLegal)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Nit">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Nit">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Nit">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Nit">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Nit">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Nit">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#EmpresaTable').DataTable({
+                language: {
+                    "sLengthMenu": "Mostrar _MENU_ entradas",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "sSearch": "Buscar:"
+                }
+            });
+        })
+    </script>
+}

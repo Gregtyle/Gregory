@@ -5,22 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Abonos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Agregar Abono</a>
 </p>
-<table class="table">
+<table class="table" id="AbonoTable">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FechaAbono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Valordeuda)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Porcentaje)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Subtotal)
@@ -30,9 +24,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Total)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CantidadAbono)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Estado)
@@ -50,12 +41,6 @@
                 @Html.DisplayFor(modelItem => item.FechaAbono)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Valordeuda)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Porcentaje)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Subtotal)
             </td>
             <td>
@@ -65,20 +50,33 @@
                 @Html.DisplayFor(modelItem => item.Total)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CantidadAbono)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Estado)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdReservaNavigation.IdReserva)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdAbono">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdAbono">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdAbono">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdAbono">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAbono">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAbono">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#AbonoTable').DataTable({
+                language: {
+                    "sLengthMenu": "Mostrar _MENU_ entradas",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "sSearch": "Buscar:"
+                }
+            });
+        })
+    </script>
+}

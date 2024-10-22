@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gregory.Models;
 
 public partial class Role
 {
+    [Display(Name = "ID Rol")]
     public int IdRol { get; set; }
 
+    [Display(Name = "Nombre del Rol")]
     public string NombreRol { get; set; } = null!;
 
     public string? Descripcion { get; set; }
