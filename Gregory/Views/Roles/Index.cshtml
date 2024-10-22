@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Gregory.Models.Role>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Roles</h1>
+
+<p>
+    <a asp-action="Create">Agregar Rol</a>
+</p>
+<table class="table" id="RolesTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreRol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreRol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdRol">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdRol">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdRol">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#RolesTable').DataTable({
+                language: {
+                    "sLengthMenu": "Mostrar _MENU_ entradas",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "sSearch": "Buscar:"
+                }
+            });
+        })
+    </script>
+}

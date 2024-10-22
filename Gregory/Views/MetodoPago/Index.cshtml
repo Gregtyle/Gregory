@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Gregory.Models.MetodoPago>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Metodo de Pago</h1>
+
+<p>
+    <a asp-action="Create">Agregar Metodo de Pago</a>
+</p>
+<table class="table" id="MetodoPagoTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdMetodoPago">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdMetodoPago">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdMetodoPago">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#MetodoPagoTable').DataTable({
+                language: {
+                    "sLengthMenu": "Mostrar _MENU_ entradas",
+                    "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "sSearch": "Buscar:"
+                }
+            });
+        })
+    </script>
+}
