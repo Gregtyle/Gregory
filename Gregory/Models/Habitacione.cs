@@ -16,7 +16,7 @@ public partial class Habitacione
 
     public bool Estado { get; set; }
 
-    public string? Descripcion { get; set; }
+    public string Descripcion { get; set; }
 
     public decimal Precio { get; set; }
 
@@ -30,7 +30,7 @@ public partial class Habitacione
     [Display(Name = "Inmueble")]
     public virtual Inmueble IdInmuebleNavigation { get; set; } = null!;
 
-    [Display(Name = "Habitación")]
+    [Display(Name = "Tipo de Habitación")]
     public virtual TipoHabitacione IdTipoHabitacionNavigation { get; set; } = null!;
 
     public virtual ICollection<PaquetesHabitacione> PaquetesHabitaciones { get; set; } = new List<PaquetesHabitacione>();

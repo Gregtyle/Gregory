@@ -20,12 +20,6 @@ namespace Gregory.Validaciones
                 .NotEmpty().WithMessage("el precio es obligatorio")
                 .GreaterThan(0).WithMessage("El precio total debe ser mayor que 0.");
 
-            RuleFor(PaquetesHospedaje => PaquetesHospedaje.Duracion)
-                .NotEmpty().WithMessage("La duracion es obligatoria")
-                .GreaterThanOrEqualTo(0).WithMessage("La duración debe ser mayor que 0.")
-                .LessThanOrEqualTo(365).WithMessage("La duración no puede ser mayor a 365 días.");
-
-
         }
     }
 }

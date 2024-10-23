@@ -15,6 +15,7 @@ public partial class Abono
     [Display(Name = "Fecha de Abono")]
     public DateTime FechaAbono { get; set; }
 
+    [Display(Name = "Valor de Deuda")]
     public decimal Valordeuda { get; set; }
 
     public decimal Porcentaje { get; set; }
@@ -25,6 +26,7 @@ public partial class Abono
 
     public decimal Total { get; set; }
 
+    [Display(Name ="Cantidad de Abono")]
     public int? CantidadAbono { get; set; }
 
     public bool Estado { get; set; }

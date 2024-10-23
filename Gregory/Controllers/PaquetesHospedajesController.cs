@@ -58,7 +58,7 @@ namespace Gregory.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdPaquete,Nombre,Descripcion,PrecioTotal,Duracion,IdServicio,IdHabitacion")] PaquetesHospedaje paquetesHospedaje)
+        public async Task<IActionResult> Create([Bind("IdPaquete,Nombre,Descripcion,PrecioTotal,IdServicio,IdHabitacion")] PaquetesHospedaje paquetesHospedaje)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +111,7 @@ namespace Gregory.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdPaquete,Nombre,Descripcion,PrecioTotal,Duracion,IdServicio,IdHabitacion")] PaquetesHospedaje paquetesHospedaje)
+        public async Task<IActionResult> Edit(int id, [Bind("IdPaquete,Nombre,Descripcion,PrecioTotal,IdServicio,IdHabitacion")] PaquetesHospedaje paquetesHospedaje)
         {
             if (id != paquetesHospedaje.IdPaquete)
             {

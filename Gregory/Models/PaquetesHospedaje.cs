@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gregory.Models;
 
@@ -16,7 +17,7 @@ public partial class PaquetesHospedaje
     [Display(Name = "Precio")]
     public decimal PrecioTotal { get; set; }
 
-    public int Duracion { get; set; }
+    public int? Duracion { get; set; }
 
     [Display(Name = "ID Servicio")]
     public int IdServicio { get; set; }

@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1>Agregar</h1>
 
-<h4>PaquetesHospedaje</h4>
+<h4>Paquetes Hospedaje</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -25,13 +25,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="PrecioTotal" class="control-label"></label>
-                <input asp-for="PrecioTotal" class="form-control" />
+                <input asp-for="PrecioTotal" class="form-control" id="precio" />
                 <span asp-validation-for="PrecioTotal" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Duracion" class="control-label"></label>
-                <input asp-for="Duracion" class="form-control" />
-                <span asp-validation-for="Duracion" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdServicioNavigation" class="control-label"></label>
@@ -50,24 +45,29 @@
                 <input type="text" id="subtotal" class="form-control" readonly />
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label>Precio Total:</label>
+                <input asp-for="PrecioTotal" class="form-control" id="total" readonly />
+                <span asp-validation-for="PrecioTotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Agregar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista</a>
 </div>
 
 @section Scripts {
     <script>
         $(document).ready(function () {
-            // Capturar el evento de cambio en los selectores
-            $('#servicio-select, #habitacion-select').change(function () {
-                // Obtener los valores seleccionados
+            // Función para actualizar el total
+            function actualizarTotal() {
                 var idServicio = $('#servicio-select').val();
                 var idHabitacion = $('#habitacion-select').val();
+                var precio = parseFloat($('#precio').val()) || 0;
 
                 // Si ambos están seleccionados, hacer la llamada AJAX para obtener los precios
                 if (idServicio && idHabitacion) {
@@ -77,16 +77,31 @@
                         data: { idServicio: idServicio, idHabitacion: idHabitacion },
                         success: function (data) {
                             // Actualizar el campo de subtotal con el precio calculado
-                            $('#subtotal').val(data.subtotal);
+                            $('#subtotal').val(data.subtotal.toFixed(2));
+
+                            // Calcular el precio total incluyendo el precio adicional
+                            var precioTotal = data.subtotal + precio;
+
+                            // Mostrar el precio total en el campo correspondiente
+                            $('#total').val(precioTotal.toFixed(2));
                         }
                     });
+                } else {
+                    // Limpiar subtotal y total si no hay selección
+                    $('#subtotal').val('');
+                    $('#total').val('');
                 }
+            }
+
+            // Capturar el evento de cambio en los selectores
+            $('#servicio-select, #habitacion-select, #precio').change(function () {
+                // Llamar a la función para actualizar el total
+                actualizarTotal();
             });
         });
-      
+
     </script>
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     </script>
 }
+
